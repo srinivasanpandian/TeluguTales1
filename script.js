@@ -87,8 +87,8 @@ const leafObserver = new IntersectionObserver((entries) => {
 leafObserver.observe(secondSection);
 
 // Section Visibility Handling
-const sections = document.querySelectorAll('.hero, .second-section, .third-section, .fourth-section, .fifth-section, .sixth-section, .seventh-section, .eighth-section, .ninth-section');
-const backgrounds = document.querySelectorAll('.wooden-background, .second-background, .third-background, .fourth-background, .fifth-background, .sixth-background, .seventh-background, .eighth-background, .ninth-background');
+const sections = document.querySelectorAll('.hero, .second-section, .third-section, .fourth-section, .fifth-section, .seventh-section, .eighth-section, .ninth-section');
+const backgrounds = document.querySelectorAll('.wooden-background, .second-background, .third-background, .fourth-background');
 
 const observerOptions = {
     root: null,
@@ -100,11 +100,21 @@ const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             // Hide all backgrounds first
-            backgrounds.forEach(bg => bg.style.opacity = '0');
+            backgrounds.forEach(bg => {
+                bg.style.opacity = '0';
+            });
+            
+            // Remove visible class from fifth section
+            document.querySelector('.fifth-section').classList.remove('visible');
             
             // Show the background for the current section
             const sectionIndex = Array.from(sections).indexOf(entry.target);
-            backgrounds[sectionIndex].style.opacity = '1';
+            
+            if (sectionIndex === 4) { // Fifth section
+                document.querySelector('.fifth-section').classList.add('visible');
+            } else {
+                backgrounds[sectionIndex].style.opacity = '1';
+            }
             
             entry.target.classList.add('visible');
         } else {
@@ -217,4 +227,47 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add transition to wooden background
     const woodenBg = document.querySelector('.wooden-background');
     woodenBg.style.transition = 'opacity 0.5s ease-in-out';
-}); 
+});
+
+// Fifth Section Observer
+const fifthSection = document.querySelector('.fifth-section');
+const fifthObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Add leaf transition when entering fifth section
+            const leafLeft = document.querySelector('.leaf-left');
+            const leafRight = document.querySelector('.leaf-right');
+            
+            setTimeout(() => {
+                leafLeft.classList.add('active');
+                leafRight.classList.add('active');
+                
+                setTimeout(() => {
+                    leafLeft.classList.add('open');
+                    leafRight.classList.add('open');
+                }, 100);
+            }, 500);
+        } else {
+            // Remove classes when scrolling away
+            const leafLeft = document.querySelector('.leaf-left');
+            const leafRight = document.querySelector('.leaf-right');
+            
+            leafLeft.classList.remove('open');
+            leafRight.classList.remove('open');
+            
+            setTimeout(() => {
+                leafLeft.classList.remove('active');
+                leafRight.classList.remove('active');
+                entry.target.classList.remove('visible');
+            }, 1000);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+fifthObserver.observe(fifthSection);
+
+// Cooking Stories Section - Book Navigation
+// This section has been removed as the sixth section was removed from the HTML 
