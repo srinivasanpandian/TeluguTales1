@@ -932,35 +932,78 @@ img {
     opacity: 1;
 }
 
-/* Background image optimization for all sections */
-.wooden-background, .second-background, .third-background, 
-.fourth-background {
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    transform: translate3d(0,0,0);
-    -webkit-transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    will-change: transform;
+/* Gallery Container */
+.gallery-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1200px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Responsive adjustments for all sections */
-@media (max-width: 768px) {
-    .wooden-background, .second-background, .third-background,
-    .fourth-background {
-        background-size: cover;
-        background-position: center;
+.fourth-section.visible .gallery-container {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    transform-style: preserve-3d;
+    animation: rotate 40s infinite cubic-bezier(0.45, 0, 0.55, 1);
+    transform: translateY(0);
+}
+
+/* Section Title */
+.section-title {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    text-align: center;
+    color: white;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fourth-section.visible .section-title {
+    opacity: 1;
+    transform: translateX(-50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .gallery-container {
+        perspective: 1000px;
     }
 }
 
-@media (max-width: 480px) {
-    .wooden-background, .second-background, .third-background,
-    .fourth-background {
-        background-size: cover;
-        background-position: center;
+@media (max-width: 992px) {
+    .gallery-container {
+        perspective: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        perspective: 600px;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-container {
+        perspective: 400px;
     }
 }
 
@@ -1114,37 +1157,360 @@ img {
     }
 }
 
-/* Fourth Section - Food & Festivals Gallery */
-.gallery-container {
+/* Fifth Section - Legends of Royal Kitchen */
+.fifth-section {
     position: relative;
-    z-index: 2;
     width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1200px;
+    min-height: 100vh;
     overflow: hidden;
+    padding: 80px 0;
+    background-color: #000;
 }
 
-.carousel {
-    position: relative;
+.fifth-section::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 400px;
-    transform-style: preserve-3d;
-    animation: rotate 40s infinite cubic-bezier(0.45, 0, 0.55, 1);
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.fifth-section.visible::before {
+    opacity: 1;
+}
+
+/* Fire Effect */
+.fire-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.fifth-section.visible .fire-container {
+    opacity: 1;
+}
+
+.fire {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #ff4500, #ff8c00, #ffd700);
+    filter: blur(10px);
+    animation: fireAnimation 2s infinite alternate;
+}
+
+@keyframes fireAnimation {
+    0% {
+        height: 100%;
+        filter: blur(10px) brightness(1);
+    }
+    50% {
+        height: 120%;
+        filter: blur(15px) brightness(1.2);
+    }
+    100% {
+        height: 100%;
+        filter: blur(10px) brightness(1);
+    }
+}
+
+/* Smoke Effect */
+.smoke {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('img/smoke.png') repeat-x;
+    background-size: contain;
+    opacity: 0.3;
+    animation: smokeRise 20s linear infinite;
+}
+
+@keyframes smokeRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Heat Shimmer Effect */
+.royal-kitchen-wrapper {
+    position: relative;
+    z-index: 3;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fifth-section.visible .royal-kitchen-wrapper {
+    opacity: 1;
     transform: translateY(0);
 }
 
-@keyframes rotate {
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    filter: url('#heatShimmer');
+}
+
+.section-header h2 {
+    font-size: 3.5rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
     0% {
-        transform: rotateY(0deg);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
     }
     100% {
-        transform: rotateY(360deg);
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
 }
 
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .fire-container {
+        height: 150px;
+    }
+    
+    .section-header h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .fire-container {
+        height: 120px;
+    }
+    
+    .section-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .fire-container {
+        height: 100px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .section-header p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .fire-container {
+        height: 80px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Seventh Section */
+.seventh-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 80px 0;
+    background-color: #f8f4e9;
+}
+
+.seventh-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.seventh-content h2 {
+    font-size: 3rem;
+    color: #8B4513;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+.seventh-content p {
+    font-size: 1.2rem;
+    color: #5D4037;
+    line-height: 1.6;
+}
+
+/* Royal Grid Styles */
+.royal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.royal-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.5s ease;
+}
+
+.royal-item:nth-child(1) { animation: fadeInUp 0.8s ease forwards 0.2s; }
+.royal-item:nth-child(2) { animation: fadeInUp 0.8s ease forwards 0.4s; }
+.royal-item:nth-child(3) { animation: fadeInUp 0.8s ease forwards 0.6s; }
+.royal-item:nth-child(4) { animation: fadeInUp 0.8s ease forwards 0.8s; }
+
+.royal-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.royal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.royal-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+}
+
+.royal-text h3 {
+    color: #ffd700;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-family: 'Georgia', serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.royal-text p {
+    color: #fff;
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s;
+}
+
+/* Hover Effects */
+.royal-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+.royal-item:hover .royal-image img {
+    transform: scale(1.1);
+}
+
+.royal-item:hover .image-overlay {
+    opacity: 1;
+}
+
+.royal-item:hover .royal-text {
+    transform: translateY(0);
+}
+
+.royal-item:hover .royal-text p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Grid Adjustments */
+@media (max-width: 992px) {
+    .royal-grid {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 40px auto 0;
+    }
+    
+    .royal-image {
+        height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .royal-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .royal-text p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Gallery Item Styles */
 .gallery-item {
     position: absolute;
     width: 400px;
@@ -1197,32 +1563,16 @@ img {
     color: rgba(255, 255, 255, 0.9);
 }
 
-.section-title {
-    position: absolute;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    text-align: center;
-    color: white;
-    width: 100%;
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
 }
 
-.section-title h2 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    font-family: 'Georgia', serif;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.section-title p {
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Responsive adjustments */
+/* Responsive Gallery Item Adjustments */
 @media (max-width: 1200px) {
     .gallery-item {
         width: 350px;
@@ -1285,358 +1635,4 @@ img {
     .gallery-item:nth-child(4) { transform: rotateY(180deg) translateZ(180px); }
     .gallery-item:nth-child(5) { transform: rotateY(240deg) translateZ(180px); }
     .gallery-item:nth-child(6) { transform: rotateY(300deg) translateZ(180px); }
-    
-    .section-title h2 {
-        font-size: 2rem;
-    }
-    
-    .section-title p {
-        font-size: 0.9rem;
-    }
-}
-
-/* Fifth Section - Legends of Royal Kitchen */
-.fifth-section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    padding: 80px 0;
-}
-
-.fifth-section::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('img/leaf.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    filter: brightness(0.7);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-}
-
-.fifth-section.visible::before {
-    opacity: 1;
-}
-
-.fifth-section::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* background: linear-gradient(135deg, rgba(26, 15, 15, 0.9) 0%, rgba(45, 31, 31, 0.9) 100%); */
-    z-index: 1;
-}
-
-/* Leaf transition for fifth section */
-.fifth-section .leaf-transition {
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 1.5s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
-}
-
-.fifth-section.visible .leaf-transition.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.fifth-section .leaf-left.open {
-    transform: translateX(-100%) rotateY(20deg);
-}
-
-.fifth-section .leaf-right.open {
-    transform: translateX(100%) rotateY(-20deg);
-}
-
-.royal-kitchen-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fifth-section.visible .royal-kitchen-wrapper {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s ease forwards;
-}
-
-.section-header h2 {
-    font-size: 3.5rem;
-    color: #ffd700;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-}
-
-.section-header p {
-    font-size: 1.2rem;
-    color: #fff;
-    opacity: 0.9;
-}
-
-.royal-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    margin-top: 40px;
-}
-
-.royal-item {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-.royal-item:nth-child(1) { animation: fadeInUp 0.8s ease forwards 0.2s; }
-.royal-item:nth-child(2) { animation: fadeInUp 0.8s ease forwards 0.4s; }
-.royal-item:nth-child(3) { animation: fadeInUp 0.8s ease forwards 0.6s; }
-.royal-item:nth-child(4) { animation: fadeInUp 0.8s ease forwards 0.8s; }
-
-.royal-image {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.royal-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.image-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.royal-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 30px;
-    transform: translateY(100%);
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-}
-
-.royal-text h3 {
-    color: #ffd700;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    font-family: 'Georgia', serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.royal-text p {
-    color: #fff;
-    font-size: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s ease 0.1s;
-}
-
-/* Hover Effects */
-.royal-item:hover .royal-image img {
-    transform: scale(1.1);
-}
-
-.royal-item:hover .image-overlay {
-    opacity: 1;
-}
-
-.royal-item:hover .royal-text {
-    transform: translateY(0);
-}
-
-.royal-item:hover .royal-text p {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Decorative Elements */
-.decorative-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.royal-pattern {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    /* background: url('img/Onam Sadhya.png') no-repeat center/contain; */
-    opacity: 0.1;
-}
-
-.pattern-1 {
-    top: 10%;
-    left: 5%;
-    animation: floatPattern 8s ease-in-out infinite;
-}
-
-.pattern-2 {
-    top: 50%;
-    right: 5%;
-    animation: floatPattern 8s ease-in-out infinite reverse;
-}
-
-.pattern-3 {
-    bottom: 10%;
-    left: 50%;
-    animation: floatPattern 8s ease-in-out infinite 2s;
-}
-
-@keyframes floatPattern {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    50% {
-        transform: translate(20px, 20px) rotate(5deg);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-    .royal-grid {
-        gap: 30px;
-    }
-    
-    .section-header h2 {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .royal-grid {
-        grid-template-columns: 1fr;
-        max-width: 600px;
-        margin: 40px auto 0;
-    }
-    
-    .royal-image {
-        height: 250px;
-    }
-    
-    .section-header h2 {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .section-header h2 {
-        font-size: 2rem;
-    }
-    
-    .section-header p {
-        font-size: 1rem;
-    }
-    
-    .royal-text h3 {
-        font-size: 1.5rem;
-    }
-    
-    .royal-text p {
-        font-size: 0.9rem;
-    }
-    
-    .royal-pattern {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-@media (max-width: 576px) {
-    .royal-image {
-        height: 200px;
-    }
-    
-    .royal-text {
-        padding: 20px;
-    }
-    
-    .section-header h2 {
-        font-size: 1.8rem;
-    }
-    
-    .royal-pattern {
-        width: 100px;
-        height: 100px;
-    }
-}
-
-/* Seventh Section */
-.seventh-section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    overflow: hidden;
-    padding: 80px 0;
-    background-color: #f8f4e9;
-}
-
-.seventh-content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.seventh-content h2 {
-    font-size: 3rem;
-    color: #8B4513;
-    margin-bottom: 20px;
-    font-family: 'Georgia', serif;
-}
-
-.seventh-content p {
-    font-size: 1.2rem;
-    color: #5D4037;
-    line-height: 1.6;
 }

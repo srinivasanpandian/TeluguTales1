@@ -169,6 +169,23 @@
 
     <!-- Fifth Section - Legends of Royal Kitchen -->
     <section class="fifth-section">
+        <!-- SVG Filter for Heat Shimmer -->
+        <svg style="position: absolute; width: 0; height: 0;">
+            <defs>
+                <filter id="heatShimmer">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
+                    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="heat" />
+                    <feBlend in="SourceGraphic" in2="heat" mode="screen" />
+                </filter>
+            </defs>
+        </svg>
+
+        <!-- Fire and Smoke Effects -->
+        <div class="fire-container">
+            <div class="fire"></div>
+            <div class="smoke"></div>
+        </div>
+
         <div class="royal-kitchen-wrapper">
             <div class="section-header">
                 <h2>Legends of the Royal Kitchen</h2>
@@ -215,11 +232,6 @@
                         <p>A decadent sweet treat made with milk, nuts, and aromatic spices, reserved for the most special occasions.</p>
                     </div>
                 </div>
-            </div>
-            <div class="decorative-elements">
-                <div class="royal-pattern pattern-1"></div>
-                <div class="royal-pattern pattern-2"></div>
-                <div class="royal-pattern pattern-3"></div>
             </div>
         </div>
     </section>
