@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tales of Telugu</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Fredoka:wght@400;600&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
 </head>
 <body>
     <!-- Menu Modal -->
@@ -43,8 +48,7 @@
 
         <!-- Main Title -->
         <div class="main-title">
-            <h1>Tales of Telugu</h1>
-            <p>Stories from the Heart of South India</p>
+            <img src="img/Tales_of_Telugu-removebg-preview.png" alt="">
         </div>
     </section>
 
@@ -167,76 +171,196 @@
         </div>
     </section>
 
-    <!-- Fifth Section - Legends of Royal Kitchen -->
-    <section class="fifth-section">
-        <!-- SVG Filter for Heat Shimmer -->
-        <svg style="position: absolute; width: 0; height: 0;">
-            <defs>
-                <filter id="heatShimmer">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur" />
-                    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" result="heat" />
-                    <feBlend in="SourceGraphic" in2="heat" mode="screen" />
-                </filter>
-            </defs>
-        </svg>
+   <!-- Fifth Section - Legends of Royal Kitchen -->
 
-        <!-- Fire and Smoke Effects -->
-        <div class="fire-container">
-            <div class="fire"></div>
-            <div class="smoke"></div>
+   <section class="fifth-section">
+    <div class="container">
+      <div class="fifth-container">
+
+        <div class="section-header">
+          <h2>Legends of the Royal Kitchen</h2>
         </div>
 
-        <div class="royal-kitchen-wrapper">
-            <div class="section-header">
-                <h2>Legends of the Royal Kitchen</h2>
-                <p>Discover the royal recipes that have been passed down through generations</p>
-            </div>
-            <div class="royal-grid">
-                <div class="royal-item">
-                    <div class="royal-image">
-                        <img src="img/biriyani.avif" alt="Royal Biryani">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="royal-text">
-                        <h3>Royal Biryani</h3>
-                        <p>A fragrant rice dish with tender meat, aromatic spices, and caramelized onions, perfected in the royal kitchens of Hyderabad.</p>
-                    </div>
-                </div>
-                <div class="royal-item">
-                    <div class="royal-image">
-                        <img src="img/pulav.avif" alt="Royal Pulao">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="royal-text">
-                        <h3>Royal Pulao</h3>
-                        <p>An elegant rice dish with nuts, dried fruits, and subtle spices, served at royal banquets and special occasions.</p>
-                    </div>
-                </div>
-                <div class="royal-item">
-                    <div class="royal-image">
-                        <img src="img/kebab.avif" alt="Royal Kebab">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="royal-text">
-                        <h3>Royal Kebab</h3>
-                        <p>Succulent meat marinated in royal spices and grilled to perfection, a favorite of the Nizam's court.</p>
-                    </div>
-                </div>
-                <div class="royal-item">
-                    <div class="royal-image">
-                        <img src="img/dessert.avif" alt="Royal Dessert">
-                        <div class="image-overlay"></div>
-                    </div>
-                    <div class="royal-text">
-                        <h3>Royal Dessert</h3>
-                        <p>A decadent sweet treat made with milk, nuts, and aromatic spices, reserved for the most special occasions.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <div class="row">
 
-    
-    <script src="script.js"></script>
+          <div class="col-12 col-md-6">
+            <div class="item">
+              <picture class="img-container">
+                <img src="img/biriyani.avif" alt="">
+                <div class="image-overlay"></div>
+              </picture>
+              <div class="text-container">
+                <h3>Royal Biryani</h3>
+                <p>
+                  A fragrant rice dish with tender meat, aromatic spices, and
+                  caramelized onions, perfected in the royal kitchens of
+                  Hyderabad.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="item">
+              <picture class="img-container">
+                <img src="img/dessert.avif" alt="">
+                <div class="image-overlay"></div>
+              </picture>
+              <div class="text-container">
+                <h3>Royal Dessert</h3>
+                <p>
+                  A decadent sweet treat made with milk, nuts, and aromatic
+                  spices, reserved for the most special occasions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="item">
+              <picture class="img-container">
+                <img src="img/kebab.avif" alt="">
+                <div class="image-overlay"></div>
+              </picture>
+              <div class="text-container">
+                <h3>Royal Kebab</h3>
+                <p>
+                  Succulent meat marinated in royal spices and grilled to
+                  perfection, a favorite of the Nizam's court.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="item">
+              <picture class="img-container">
+                <img src="img/pulav.avif" alt="">
+                <div class="image-overlay"></div>
+              </picture>
+              <div class="text-container">
+                <h3>Royal Pulao</h3>
+                <p>
+                  An elegant rice dish with nuts, dried fruits, and subtle spices,
+                  served at royal banquets and special occasions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>          
+
+      </div>
+    </div>
+  </section>
+
+  <!-- section - 9 -->
+<section class="bazaar-section">
+    <div class="container">
+      <h2 class="bazaar-heading">🛍️ Telugu Folklore Treasures</h2>
+      <p class="bazaar-intro text-center mb-5">Take a piece of Telugu folklore with you—whether through flavors, books, or immersive experiences.</p>
+      <div class="bazaar-grid">
+        <!-- Cards -->
+        <div class="bazaar-card" data-aos="fade-up">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="img/biriyani.avif" alt="Spice Blend">
+              <h5>Bobbatlu Spice Blend</h5>
+            </div>
+            <div class="card-back">
+              <p>Handmade story-inspired spice blend based on the ancient tale of the Kakatiya dynasty's royal kitchen. Perfect for traditional sweet Bobbatlu.</p>
+              <button>Buy Now</button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="bazaar-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="img/biriyani.avif" alt="Recipe Book">
+              <h5>Illustrated Folktale Recipe Book</h5>
+            </div>
+            <div class="card-back">
+              <p>Beautifully illustrated collection of Telugu recipes with the folktales that inspired them, including the legend of Pulihora and the goddess Annapurna.</p>
+              <button>Buy Now</button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="bazaar-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="img/biriyani.avif" alt="Cooking Class">
+              <h5>Mythical Flavors Workshop</h5>
+            </div>
+            <div class="card-back">
+              <p>Learn to prepare dishes from Telugu mythology like the divine Payasam from the tale of Lord Vishnu and the Ocean of Milk.</p>
+              <button>Book Experience</button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="bazaar-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-inner">
+            <div class="card-front">
+              <img src="img/biriyani.avif" alt="Food Tour">
+              <h5>Folklore Food Tour</h5>
+            </div>
+            <div class="card-back">
+              <p>Guided tour through Telangana's culinary landmarks, exploring the stories behind iconic dishes like Hyderabadi Biryani and the Nizam's royal feasts.</p>
+              <button>Book Experience</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-wrapper">
+        <div class="about-image">
+          <img src="img/biriyani.avif" alt="Telugu Traditional Cuisine">
+          <div class="about-experience">
+            <span class="number">5+</span>
+            <span class="text">Years of<br>Excellence</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <h2>Our Story</h2>
+          <p class="subtitle">Preserving Telugu Culinary Heritage Since 2018</p>
+          
+          <div class="about-text">
+            <p>Welcome to Tales of Telugu, where traditional recipes meet heartfelt storytelling. Our journey began with a simple mission: to preserve the rich culinary heritage of Telugu cuisine through the stories of those who kept these traditions alive.</p>
+            <p>We take pride in documenting authentic recipes passed down through generations, capturing the essence of Telugu culture through its diverse flavors and cooking techniques.</p>
+          </div>
+          
+          <div class="about-features">
+            <div class="feature">
+              <i class="fas fa-utensils"></i>
+              <h4>Authentic Recipes</h4>
+              <p>Carefully documented family recipes with traditional preparation methods</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-book-open"></i>
+              <h4>Cultural Stories</h4>
+              <p>Rich narratives that connect each dish to its cultural significance</p>
+            </div>
+            <div class="feature">
+              <i class="fas fa-hands"></i>
+              <h4>Heritage Preserved</h4>
+              <p>Keeping ancient cooking traditions alive for future generations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <script src="script.js">
+      
+    </script>
 </body>
 </html> 
