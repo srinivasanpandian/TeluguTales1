@@ -383,7 +383,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/aboutusbg.jpg');
+    background-image: url('img/Untitled\ design\ \(15\).png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -931,7 +931,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('img/gallery bg.jpg');
+    background-image: url('img/Untitled\ design\ \(12\).png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1171,7 +1171,7 @@ img {
 }
 /* Fifth Section - Legends of Royal Kitchen */
 .fifth-section {
-    background-image: url('img/gallery bg.jpg');
+    background-image: url('img/onesideleaf.png');
     position: relative;
     background-size: cover;
     background-position: center;
@@ -1453,7 +1453,7 @@ img {
 
 .bazaar-section {
     padding: 80px 15px;
-    background-image: url('img/gallerybg.avif');
+    background-image: url('img/bananabackground.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -1729,7 +1729,7 @@ img {
 
 /* About Section Styles - Telugu Theme */
 .about-section {
-    background-image: url('img/sampleb2.png');
+    background-image: url('img/doubleleaf.png');
     padding: 100px 0;
     position: relative;
 }
@@ -1741,7 +1741,7 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 0.5);
+    /* background: rgba(255, 255, 255, 0.5); */
     z-index: 1;
 }
 
@@ -1829,7 +1829,7 @@ img {
 .about-content .subtitle {
     font-family: 'Georgia', serif;
     font-size: 1.3rem;
-    color: #666;
+    color: white;
     margin-bottom: 25px;
 }
 
@@ -1841,7 +1841,7 @@ img {
     font-family: 'Georgia', serif;
     font-size: 1.1rem;
     line-height: 1.8;
-    color: #555;
+    color: white;
     margin-bottom: 20px;
 }
 
